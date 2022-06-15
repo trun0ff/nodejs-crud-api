@@ -1,3 +1,5 @@
+import {users} from "./data.js";
+
 class Controller {
     async getUsers() {
         return new Promise((resolve, _) => resolve(data));
@@ -5,7 +7,7 @@ class Controller {
 
     async getUser(id) {
         return new Promise((resolve, reject) => {
-            let user = data.find((user) => user.id === parseInt(id));
+            let user = users.find((user) => user.id === parseInt(id));
             if (user) {
                 resolve(user);
             } else {
