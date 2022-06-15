@@ -1,12 +1,13 @@
 import * as user from "./controller.js";
 import { getReqData } from "./utils.js";
 import http from "http";
+import {Controller} from "./controller.js";
 
 const PORT = process.env.PORT || 5000;
 
 const server = http.createServer(async (req, res) => {
     if (req.url === "/api/users" && req.method === "GET") {
-        const users = await new user().getUsers();
+        const users = await new Controller().getUsers();
         res.writeHead(200, { "Content-Type": "application/json" });
         res.end(JSON.stringify(users));
     }
@@ -14,7 +15,7 @@ const server = http.createServer(async (req, res) => {
     else if (req.url.match(/\/api\/users\/([0-9]+)/) && req.method === "GET") {
         try {
             const id = req.url.split("/")[3];
-            const user = await new user().getuser(id);
+            const user = await new Controller().getUser(id);
             res.writeHead(200, { "Content-Type": "application/json" });
             res.end(JSON.stringify(user));
         } catch (error) {
@@ -26,7 +27,7 @@ const server = http.createServer(async (req, res) => {
     else if (req.url.match(/\/api\/users\/([0-9]+)/) && req.method === "DELETE") {
         try {
             const id = req.url.split("/")[3];
-            let message = await new user().deleteUser(id);
+            let message = await new Controller().deleteUser(id);
             res.writeHead(200, { "Content-Type": "application/json" });
             res.end(JSON.stringify({ message }));
         } catch (error) {
@@ -38,7 +39,7 @@ const server = http.createServer(async (req, res) => {
     else if (req.url.match(/\/api\/users\/([0-9]+)/) && req.method === "PUT") {
         try {
             const id = req.url.split("/")[3];
-            let updatedUser = await new user().updateUser(id);
+            let updatedUser = await new Controller().updateUser(id);
             res.writeHead(200, { "Content-Type": "application/json" });
             res.end(JSON.stringify(updatedUser));
         } catch (error) {
@@ -49,7 +50,7 @@ const server = http.createServer(async (req, res) => {
 
     else if (req.url === "/api/users" && req.method === "POST") {
         let userData = await getReqData(req);
-        let updateUser = await new user().createUser(JSON.parse(userData));
+        let updateUser = await new Controller().createUser(JSON.parse(userData));
         res.writeHead(200, { "Content-Type": "application/json" });
         res.end(JSON.stringify(updateUser));
     }

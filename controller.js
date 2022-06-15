@@ -2,12 +2,12 @@ import {users} from "./data.js";
 
 class Controller {
     async getUsers() {
-        return new Promise((resolve, _) => resolve(data));
+        return new Promise((resolve, _) => resolve(users));
     }
 
     async getUser(id) {
         return new Promise((resolve, reject) => {
-            let user = users.find((user) => user.id === parseInt(id));
+            let user = users.find((userObject) => userObject.id === parseInt(id));
             if (user) {
                 resolve(user);
             } else {
@@ -29,7 +29,7 @@ class Controller {
 
     async updateUser(id) {
         return new Promise((resolve, reject) => {
-            let user = data.find((user) => user.id === parseInt(id));
+            let user = users.find((userObject) => userObject.id === parseInt(id));
             if (!user) {
                 reject(`No user with id ${id} found`);
             }
@@ -40,7 +40,7 @@ class Controller {
 
     async deleteUser(id) {
         return new Promise((resolve, reject) => {
-            let user = data.find((user) => user.id === parseInt(id));
+            let user = users.find((userObject) => userObject.id === parseInt(id));
             if (!user) {
                 reject(`No user with id ${id} found`);
             }
