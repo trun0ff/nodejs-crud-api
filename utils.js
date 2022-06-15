@@ -17,4 +17,4 @@ function getReqData(req) {
         }
     });
 }
-module.exports = { getReqData };
+export { getReqData };

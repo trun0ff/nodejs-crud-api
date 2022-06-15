@@ -12,4 +12,4 @@ const users = [
         hobbies: [],
     },
 ];
-module.exports = users;
+export {users};

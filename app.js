@@ -1,6 +1,6 @@
-import "http";
 import * as user from "./controller.js";
 import { getReqData } from "./utils.js";
+import http from "http";
 
 const PORT = process.env.PORT || 5000;
 

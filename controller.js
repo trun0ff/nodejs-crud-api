@@ -1,5 +1,3 @@
-const data = require("./data");
-
 class Controller {
     async getUsers() {
         return new Promise((resolve, _) => resolve(data));
@@ -48,4 +46,4 @@ class Controller {
         });
     }
 }
-module.exports = Controller;
+export {Controller};
