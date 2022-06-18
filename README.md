@@ -3,9 +3,11 @@ After cloning the repository checkout develop branch and install dependencies:
 `git checkout develop`
 `npm install`
 
-Go to repository root and run
+To start in dev mode run
+`npm run start:dev`
 
-`node app.js`
+To run tests
+`npm run test`
 
 Open in browser http://localhost:3000
 

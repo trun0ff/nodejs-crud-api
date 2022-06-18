@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 class Controller {
     async getUsers() {
-        return new Promise((resolve, _) => resolve(users));
+        return Promise.resolve({"users":users});
     }
 
     async getUser(uuid) {
@@ -29,7 +29,7 @@ class Controller {
                     ...userData,
                 };
                 users.push(newuser);
-                resolve(newuser);
+                resolve({"users":users});
             }
         });
     }
@@ -70,4 +70,4 @@ class Controller {
         });
     }
 }
-export {Controller};
+export {Controller as default};

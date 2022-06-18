@@ -1,19 +1,23 @@
 {
   "name": "nodesj-crud-api",
   "version": "1.0.0",
-  "main": "src/app.js",
+  "main": "./src/index.js",
   "type": "module",
+  "mode": "production",
   "scripts": {
-    "build": "webpack src/app.js -o -p dist/main.js",
-    "start:dev": "nodemon src/app.js",
-    "start:prod": " node src/app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack ./src/index.js -o -p ./dist/main.js",
+    "start:dev": "nodemon ./src/index.js",
+    "start:prod": " node ./src/index.js",
+    "test": "mocha"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "chai": "^4.3.6",
+    "chai-http": "^4.3.0",
+    "mocha": "^10.0.0",
     "typescript": "^4.7.3"
   },
   "dependencies": {

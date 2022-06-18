@@ -1,8 +1,8 @@
 import 'dotenv/config'
 import { getReqData } from "../utils.js";
 import http from "http";
-import {Controller} from "./controller.js";
 import {isValidUuid} from "./uuidChecker.js";
+import Controller from "./controller.js";
 
 const PORT = process.env.APP_PORT || 5000;
 const regexExpUuid = '/^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$/gi';
@@ -91,10 +91,13 @@ const sendResponse = (result, statusCode, data) => {
     result.end(JSON.stringify(data));
 }
 
+server.on('clientError', (err, socket) => {
+    socket.end('HTTP/1.1 500 Bad Request\r\n\r\n');
+});
+
 server.listen(PORT, () => {
     console.log(`server started on port: ${PORT}`);
 });
-server.on('error', function (e, res){
-    res.writeHead(500, { "Content-Type": "application/json" });
-    res.end(JSON.stringify({ message: "Internal server error" }));
-});
+
+
+export {server};
