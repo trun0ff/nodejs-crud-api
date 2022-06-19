@@ -6,6 +6,11 @@ After cloning the repository checkout develop branch and install dependencies:
 To start in dev mode run
 `npm run start:dev`
 
+To start scalable version
+`npm run start:multi`
+
+To test queries you can use postman collection attached in repository root.
+
 To run tests
 `npm run test`
 
