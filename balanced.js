@@ -18,6 +18,7 @@ if (cluster.isMaster) {
     });
 }
 else {
+    const basePath = '/api/users';
     const server = http.createServer(async (req, res) => {
         if (req.url.startsWith("/api/users") && req.method === "GET") {
             let endOfUrl = req.url.substring(basePath.length)
